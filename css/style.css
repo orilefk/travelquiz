@@ -119,4 +119,39 @@ body {
 #next {
 	margin-top: 6rem;
 }
-
+#recommendation_wrap {
+	margin-top: 20
+	display: none;
+	text-align: center;
+	height: 38rem;
+	overflow: auto;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 100%;
+	margin-top: 25px;
+}
+#rec_name {
+	font-size: 10rem;
+	opacity: .7;
+	color: #ffffff;
+	margin-top: 15rem;
+}
+#recommendation_wrap > h3 {
+	color: #ffffff;
+}
+.Hawaii {
+	background-image: url(../images/hawaii.png);
+}
+.Israel {
+	background-image: url(../images/israel.png);
+}
+.Scandinavia {
+	background-image: url(../images/scandinavia.png);
+}
+.Amsterdam {
+	background-image: url(../images/amsterdam.png);
+}
+.Trinidad & Tobago' {
+	background-image: url(../images/t&t.png);
+}

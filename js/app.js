@@ -7,6 +7,8 @@ $(document).ready(function(){
 		qManager.showQuestion();
 	})
 	var points = 0;
+	var recommendation = '';
+
 	/*---Clicking on an answer image*/
 	$('.unselected').click(function(){
 		$('.selected').removeClass('selected').addClass('unselected');
@@ -14,12 +16,24 @@ $(document).ready(function(){
 	})
 	/*---submitting an answer---*/
 	$('#next').on('click', function(){
-		qManager.checkAnswer();
+
 		points = points + qManager.checkAnswer();
 		console.log('points= ', points);
+
+		if (qManager.currentNum == qlist.length-1) {
+			recEngine.makeRecommendation();
+			recommendation = recEngine.makeRecommendation();
+			recEngine.displayRecommendation();
+			$('#question_wrap').fadeOut(500);
+			$('#recommendation_wrap').delay(500).fadeIn(500);
+			console.log('recommendation: ', recommendation);
+		}
+		else {
+		qManager.checkAnswer();
 		$('.selected').removeClass('selected').addClass('unselected');
 		qManager.currentNum++;
 		qManager.showQuestion();
+		}
 	})
 
 
@@ -33,7 +47,7 @@ $(document).ready(function(){
 	var question2 = {
 		question: "Which of the following best describes your vacation weather preference?",
 		pic: ["images/cristiano-ronaldo.png", "images/luke-chadwick.png", "images/ryan-giggs.png", "images/steven-gerrard.png"],
-		answers: ["It must be warm", "Warm, but doesn't matter so much", "Cool, but doesn't matter so much", "It must be cool"],
+		answers: ["I don't care at all", "Warm, but doesn't matter so much", "I'm hoping it's warm", "Warm is my #1 prioroty!"],
 		points: [1, 2, 3, 4]
 	};
 	var question3 = {
@@ -93,5 +107,28 @@ var qManager = {
 		if($('#answer4 > p').hasClass('selected')){var addPoints = 4};
 		return addPoints;
 	}
+}
+
+/*---Travel Recommendation Engine---*/
+
+var recEngine = {
+
+	makeRecommendation: function() {
+		var rec = '';
+		var destinations = ['Scandinavia', 'Trinidad & Tobago', 'Israel', 'Amsterdam', 'Hawaii'];
+		if(points <= 4) {rec = destinations[0];}
+		else if(points <= 8) {rec = destinations[1];}
+		else if(points <= 12) {rec = destinations[2];}
+		else if(points <= 16) {rec = destinations[3];}
+		else{rec = destinations[4];}
+		return rec;
+	},
+
+	displayRecommendation: function() {
+		$('#recommendation_wrap').addClass(recommendation);
+		$('#rec_name').text(recommendation);
+	}
+
+
 }
 });
