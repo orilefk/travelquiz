@@ -8,6 +8,16 @@ $(document).ready(function(){
 	})
 	var points = 0;
 	var recommendation = '';
+	var globalNum = 
+
+	$('#logo_image').on('click', function(){
+		points = 0;
+		recommendation = '';
+		qManager.currentNum = 0;
+		$('#question_wrap').fadeOut(500);
+		$('#recommendation_wrap').fadeOut(500);
+		$('#intro_wrap').delay(500).fadeIn(500);
+	});
 
 	/*---Clicking on an answer image*/
 	$('.unselected').click(function(){
@@ -16,7 +26,11 @@ $(document).ready(function(){
 	})
 	/*---submitting an answer---*/
 	$('#next').on('click', function(){
-
+	if($('#answer1 > p').hasClass('unselected') && $('#answer2 > p').hasClass('unselected') &&
+		$('#answer3 > p').hasClass('unselected') && $('#answer4 > p').hasClass('unselected')) {
+		alert('Choose a response ya doofus!')
+		}
+	else {
 		points = points + qManager.checkAnswer();
 		console.log('points= ', points);
 
@@ -34,6 +48,7 @@ $(document).ready(function(){
 		qManager.currentNum++;
 		qManager.showQuestion();
 		}
+	}
 	})
 
 
@@ -46,25 +61,25 @@ $(document).ready(function(){
 	};
 	var question2 = {
 		question: "Which of the following best describes your vacation weather preference?",
-		pic: ["images/cristiano-ronaldo.png", "images/luke-chadwick.png", "images/ryan-giggs.png", "images/steven-gerrard.png"],
+		pic: ["images/cold.png", "images/cool.png", "images/warm.png", "images/hot.png"],
 		answers: ["I don't care at all", "Warm, but doesn't matter so much", "I'm hoping it's warm", "Warm is my #1 prioroty!"],
 		points: [1, 2, 3, 4]
 	};
 	var question3 = {
 		question: "How much interaction would you like with natives and strangers?",
-		pic: ["images/teddy-sheringham.png", "images/robin-van-persie.png", "images/ryan-giggs.png", "images/alan-shearer.png"],
+		pic: ["images/manystrangers.png", "images/somestrangers.png", "images/mostlyself.png", "images/alone.png"],
 		answers: ["A lot of interaction", "Some interactions", "I'd rather keep mostly to myself", "I don't want to meet anyone"],
 		points: [1, 2, 3, 4]
 	};
 	var question4 = {
 		question: "Do you like to try new and exotic foods?",
-		pic: ["images/tony-yeboah.png", "images/peter-ndlovu.png", "images/jj-okocha.png", "images/nwankwo-kanu.png"],
+		pic: ["images/exotic.png", "images/cheese.png", "images/knowmore.png", "images/plain.png"],
 		answers: ["Yes, the weirder the better!", "Sometimes, but nothing too crazy", "Maybe, but I'll need to know more", "Never!"],
 		points: [1, 2, 3, 4]
 	};
 	var question5 = {
 		question: "Do you like traveling to popular destinations or to places less well known?",
-		pic: ["images/teddy-sheringham.png", "images/ian-rush.png", "images/les-ferdinand.png", "images/eric-cantona.png"],
+		pic: ["images/unknown.png", "images/adventurous.png", "images/known.png", "images/wellknown.png"],
 		answers: ["The stranger the better!", "Adventurous but also known", "Pretty well known places", "Only the most happening places"],
 		points: [1, 2, 3, 4]
 	};
@@ -106,6 +121,7 @@ var qManager = {
 		if($('#answer3 > p').hasClass('selected')){var addPoints = 3};
 		if($('#answer4 > p').hasClass('selected')){var addPoints = 4};
 		return addPoints;
+		
 	}
 }
 

@@ -120,16 +120,15 @@ body {
 	margin-top: 6rem;
 }
 #recommendation_wrap {
-	margin-top: 20
+	margin-top: 30px;
 	display: none;
 	text-align: center;
-	height: 38rem;
+	height: 40rem;
 	overflow: auto;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	width: 100%;
-	margin-top: 25px;
 }
 #rec_name {
 	font-size: 10rem;
@@ -154,4 +153,10 @@ body {
 }
 .Trinidad & Tobago' {
 	background-image: url(../images/t&t.png);
+}
+.Amsterdam > #rec_name {
+	display: none;
+}
+#logo > img:hover {
+	cursor: pointer;
 }
