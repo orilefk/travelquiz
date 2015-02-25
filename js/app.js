@@ -17,6 +17,8 @@ $(document).ready(function(){
 		$('#question_wrap').fadeOut(500);
 		$('#recommendation_wrap').fadeOut(500);
 		$('#intro_wrap').delay(500).fadeIn(500);
+		$('.selected').removeClass('selected').addClass('unselected');
+		$('#recommendation_wrap').removeClass();
 	});
 
 	/*---Clicking on an answer image*/
@@ -131,11 +133,11 @@ var recEngine = {
 
 	makeRecommendation: function() {
 		var rec = '';
-		var destinations = ['Scandinavia', 'Trinidad & Tobago', 'Israel', 'Amsterdam', 'Hawaii'];
-		if(points <= 4) {rec = destinations[0];}
-		else if(points <= 8) {rec = destinations[1];}
-		else if(points <= 12) {rec = destinations[2];}
-		else if(points <= 16) {rec = destinations[3];}
+		var destinations = ['Scandinavia', 'Trinidad_and_Tobago', 'Israel', 'Amsterdam', 'Hawaii'];
+		if(points <= 6) {rec = destinations[0];}
+		else if(points <= 10) {rec = destinations[1];}
+		else if(points <= 14) {rec = destinations[2];}
+		else if(points <= 17) {rec = destinations[3];}
 		else{rec = destinations[4];}
 		return rec;
 	},
