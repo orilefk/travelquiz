@@ -133,7 +133,7 @@ var recEngine = {
 
 	makeRecommendation: function() {
 		var rec = '';
-		var destinations = ['Scandinavia', 'Trinidad_and_Tobago', 'Israel', 'Amsterdam', 'Hawaii'];
+		var destinations = ['Scandinavia', 'Trinidad', 'Israel', 'Amsterdam', 'Hawaii'];
 		if(points <= 6) {rec = destinations[0];}
 		else if(points <= 10) {rec = destinations[1];}
 		else if(points <= 14) {rec = destinations[2];}
