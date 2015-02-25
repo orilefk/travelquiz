@@ -6,10 +6,13 @@ $(document).ready(function(){
 		$('#question_wrap').delay(500).fadeIn(500);
 		qManager.showQuestion();
 	})
+
+	/*---Global Variables---*/
 	var points = 0;
 	var recommendation = '';
 	var globalNum = 
 
+	/*----Start over on icon click---*/
 	$('#logo_image').on('click', function(){
 		points = 0;
 		recommendation = '';
@@ -54,7 +57,7 @@ $(document).ready(function(){
 	})
 
 
-/*---Questions---*/
+	/*---Questions---*/
 	var question1 = {
 		question: "What kind of 'active to relaxed' distribution do you prefer while on vacation?",
 		pic: ["images/veryactive.png", "images/mostlyactive.png", "images/mostlyrelaxed.png", "images/veryrelaxed.png"],
@@ -87,7 +90,7 @@ $(document).ready(function(){
 	};
 
 	var qlist = [question1, question2, question3, question4, question5];
-/*---Question Manager---*/
+	/*---Question Manager---*/
 var qManager = {
 
 	currentNum: 0,
