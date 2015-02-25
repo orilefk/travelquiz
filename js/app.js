@@ -43,20 +43,21 @@ $(document).ready(function(){
 			recEngine.makeRecommendation();
 			recommendation = recEngine.makeRecommendation();
 			recEngine.displayRecommendation();
-			$('#question_wrap').fadeOut(500);
-			$('#recommendation_wrap').delay(500).fadeIn(500);
+			$('#question_wrap').fadeOut(500,function(){
+				$('#recommendation_wrap').fadeIn(500);
+			});
 			console.log('recommendation: ', recommendation);
-		}
-		else {
-		qManager.checkAnswer();
-		$('.selected').removeClass('selected').addClass('unselected');
-		qManager.currentNum++;
-		qManager.showQuestion();
+		} else {
+			qManager.checkAnswer();
+			$('.selected').removeClass('selected').addClass('unselected');
+			qManager.currentNum++;
+			$('#question_wrap').fadeOut(1000,function(){
+				qManager.showQuestion();
+				$(this).fadeIn(500);
+			});
 		}
 	}
 	})
-
-
 	/*---Questions---*/
 	var question1 = {
 		question: "What kind of 'active to relaxed' distribution do you prefer while on vacation?",
@@ -91,7 +92,7 @@ $(document).ready(function(){
 
 	var qlist = [question1, question2, question3, question4, question5];
 	/*---Question Manager---*/
-var qManager = {
+	var qManager = {
 
 	currentNum: 0,
 	
